@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 120" fill="white">
+  <defs>
+    <!-- Diagonal slash cuts through T stem and A legs -->
+    <mask id="cuts">
+      <rect width="340" height="120" fill="white"/>
+      <!-- T slash: diagonal strip through stem -->
+      <polygon points="26,72 26,59 64,46 64,59" fill="black"/>
+      <!-- A slash: parallel diagonal strip through both legs -->
+      <polygon points="96,96 96,83 204,46 204,59" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- T and A with diagonal cuts applied -->
+  <g mask="url(#cuts)">
+    <!-- T: top horizontal bar -->
+    <rect x="0" y="2" width="90" height="22"/>
+    <!-- T: vertical stem -->
+    <rect x="33" y="24" width="24" height="94"/>
+
+    <!-- A: tent shape (outer minus inner) -->
+    <path d="M102,118 L150,2 L198,118 L177,118 L150,32 L123,118 Z"/>
+  </g>
+
+  <!-- O: thick ring with gap at upper-left (125° to 210° in math angles) -->
+  <path d="M216.4,84 A48,48 0 1,1 230.5,20.7 L241.9,37.1 A28,28 0 1,0 233.8,74 Z"/>
+
+  <!-- Small degree circle with center dot -->
+  <circle cx="312" cy="14" r="7" fill="none" stroke="white" stroke-width="2.5"/>
+  <circle cx="312" cy="14" r="1.5"/>
+</svg>
