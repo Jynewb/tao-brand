@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { GradientMesh } from "../ui/GradientMesh";
+import { asset } from "@/lib/prefix";
 
 export function Hero() {
   return (
@@ -27,14 +27,12 @@ export function Hero() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center mb-16"
         >
-          <Image
-            src="/logo-tao.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset("/logo-tao.png")}
             alt="TAO"
-            width={600}
-            height={200}
             className="w-[200px] md:w-[260px] lg:w-[300px] h-auto"
             style={{ filter: "invert(1)" }}
-            priority
           />
         </motion.div>
 
