@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { GradientMesh } from "../ui/GradientMesh";
 import { CONTACT } from "@/lib/constants";
@@ -52,9 +53,11 @@ export function ContactCTA() {
         {/* Footer mark */}
         <ScrollReveal delay={0.4}>
           <div className="mt-32 pt-8 border-t border-white/[0.06]">
-            <img
+            <Image
               src="/logo-tao.png"
               alt="TAO"
+              width={300}
+              height={100}
               className="w-20 h-auto mx-auto opacity-20"
               style={{ filter: "invert(1)" }}
             />
