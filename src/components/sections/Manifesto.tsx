@@ -7,7 +7,7 @@ export function Manifesto() {
     <section className="relative py-32 md:py-44 px-6">
       {/* Subtle gradient accent */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-[0.05] blur-[120px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-[0.05] blur-[120px] print:hidden"
         style={{
           background:
             "radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)",
