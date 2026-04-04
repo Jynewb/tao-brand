@@ -8,13 +8,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "TAO 隼思行 | AI-Native Marketing",
+  title: "TAO 隼思行 | Growth, Engineered.",
   description:
-    "用AI重新定义营销的下一个十年。10年行业深耕，200+头部品牌信任，AI原生营销科技公司。",
+    "AI-Native Integrated Marketing. 以AI原生视角重构营销服务，驱动品牌增长。",
   openGraph: {
-    title: "TAO 隼思行 | AI-Native Marketing",
+    title: "TAO 隼思行 | Growth, Engineered.",
     description:
-      "用AI重新定义营销的下一个十年。10年行业深耕，200+头部品牌信任，AI原生营销科技公司。",
+      "AI-Native Integrated Marketing. 以AI原生视角重构营销服务，驱动品牌增长。",
     type: "website",
   },
 };

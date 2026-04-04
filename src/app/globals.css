@@ -137,3 +137,38 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Print / PDF export styles */
+@media print {
+  body {
+    background: #0a0a0f !important;
+    color: #f0f0f5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Force dark backgrounds in print */
+  .glass {
+    background: rgba(255, 255, 255, 0.03) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive elements */
+  .scroll-indicator,
+  [style*="scroll-hint"] {
+    display: none !important;
+  }
+
+  /* Ensure gradient text shows */
+  .gradient-text,
+  .gradient-text-purple {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

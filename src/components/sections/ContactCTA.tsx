@@ -50,7 +50,7 @@ export function ContactCTA() {
           </p>
         </ScrollReveal>
 
-        {/* Footer mark */}
+        {/* Footer */}
         <ScrollReveal delay={0.4}>
           <div className="mt-32 pt-8 border-t border-white/[0.06]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -61,7 +61,7 @@ export function ContactCTA() {
               style={{ filter: "invert(1)" }}
             />
             <p className="text-white/15 text-[10px] mt-4 tracking-[0.3em] font-light">
-              BRAND TO BLOSSOM
+              GROWTH, ENGINEERED.
             </p>
           </div>
         </ScrollReveal>

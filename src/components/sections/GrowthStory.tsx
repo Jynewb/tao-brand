@@ -13,11 +13,14 @@ export function GrowthStory() {
             Journey
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-text-primary mb-20 md:mb-32 tracking-wide">
-            从实战到 <span className="gradient-text-purple font-normal">AI-Native</span>
+            从实战到{" "}
+            <span className="gradient-text-purple font-normal">
+              AI-Native
+            </span>
           </h2>
         </ScrollReveal>
 
-        {/* Timeline — minimal horizontal */}
+        {/* Timeline */}
         <div className="relative">
           {/* Connecting line */}
           <motion.div
@@ -27,7 +30,8 @@ export function GrowthStory() {
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              background: "linear-gradient(90deg, rgba(99,102,241,0.3), rgba(6,182,212,0.3))",
+              background:
+                "linear-gradient(90deg, rgba(99,102,241,0.3), rgba(6,182,212,0.3))",
               transformOrigin: "left",
             }}
           />
@@ -47,7 +51,6 @@ export function GrowthStory() {
                     />
                   </div>
 
-                  {/* Year */}
                   <div
                     className={`text-5xl md:text-6xl font-thin mb-4 tracking-tight ${
                       item.isCurrent ? "gradient-text" : "text-text-primary"
@@ -56,12 +59,10 @@ export function GrowthStory() {
                     {item.year}
                   </div>
 
-                  {/* Title */}
                   <p className="text-lg font-light text-text-primary mb-2 tracking-wide">
                     {item.title}
                   </p>
 
-                  {/* Description */}
                   <p className="text-sm text-text-muted font-extralight">
                     {item.description}
                   </p>

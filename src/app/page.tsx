@@ -1,6 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
-import { OurEdge } from "@/components/sections/OurEdge";
-import { AiCapabilities } from "@/components/sections/AiCapabilities";
+import { Manifesto } from "@/components/sections/Manifesto";
+import { MOSIntro } from "@/components/sections/MOSIntro";
+import { MOSModules } from "@/components/sections/MOSModules";
+import { MOSMockup } from "@/components/sections/MOSMockup";
+import { ServicePillars } from "@/components/sections/ServicePillars";
+import { CaseStudies } from "@/components/sections/CaseStudies";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 import { GrowthStory } from "@/components/sections/GrowthStory";
 import { ContactCTA } from "@/components/sections/ContactCTA";
@@ -22,15 +26,40 @@ function SectionDivider() {
 export default function Home() {
   return (
     <main>
+      {/* 1. Cover — Hero with tagline */}
       <Hero />
       <SectionDivider />
-      <OurEdge />
+
+      {/* 2. Brand Manifesto */}
+      <Manifesto />
       <SectionDivider />
-      <AiCapabilities />
+
+      {/* 3. TAO MOS — System Philosophy + Overview */}
+      <MOSIntro />
+
+      {/* 4. TAO MOS — Six Modules Deep Dive */}
+      <MOSModules />
+
+      {/* 4.5 TAO MOS — System Preview Mockup */}
+      <MOSMockup />
       <SectionDivider />
+
+      {/* 5. Service Capabilities */}
+      <ServicePillars />
+      <SectionDivider />
+
+      {/* 6. Case Studies */}
+      <CaseStudies />
+      <SectionDivider />
+
+      {/* 7. Client Trust */}
       <ClientLogos />
       <SectionDivider />
+
+      {/* 7. Journey */}
       <GrowthStory />
+
+      {/* 8. Contact */}
       <ContactCTA />
     </main>
   );

@@ -19,7 +19,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -31,22 +31,32 @@ export function Hero() {
           <img
             src={asset("/logo-tao.png")}
             alt="TAO"
-            className="w-[200px] md:w-[260px] lg:w-[300px] h-auto"
+            className="w-[180px] md:w-[220px] lg:w-[260px] h-auto"
             style={{ filter: "invert(1)" }}
           />
         </motion.div>
 
-        {/* Manifesto — integrated into hero */}
+        {/* Tagline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="text-lg md:text-xl lg:text-2xl font-extralight text-text-secondary leading-relaxed tracking-wide mb-3">
-            营销的下一个十年，
-          </p>
-          <p className="text-lg md:text-xl lg:text-2xl font-normal gradient-text-purple leading-relaxed tracking-wide">
-            属于既懂行业、又掌握AI的公司。
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-text-primary leading-none">
+            Growth
+            <span className="gradient-text font-light">,</span>{" "}
+            Engineered
+            <span className="gradient-text font-light">.</span>
+          </h1>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p className="mt-4 text-xl md:text-2xl lg:text-3xl font-extralight text-text-secondary tracking-widest">
+            驱动增长
           </p>
         </motion.div>
 
@@ -54,34 +64,22 @@ export function Hero() {
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="w-12 h-px mx-auto my-10"
+          transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="w-12 h-px mx-auto my-12"
           style={{
-            background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
+            background:
+              "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
           }}
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="text-lg md:text-xl lg:text-2xl font-extralight text-text-secondary leading-relaxed tracking-wide mb-3">
-            我们不做传统意义上的服务商，
-          </p>
-          <p className="text-lg md:text-xl lg:text-2xl font-normal gradient-text leading-relaxed tracking-wide">
-            我们交付结果。
-          </p>
-        </motion.div>
-
-        {/* Subtle positioning label */}
+        {/* Positioning */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-14 text-xs text-text-muted tracking-[0.25em] font-light"
+          transition={{ duration: 1, delay: 0.9 }}
+          className="text-xs md:text-sm text-text-muted tracking-[0.3em] font-light"
         >
-          AI-Native Marketing Intelligence
+          AI-Native Integrated Marketing
         </motion.p>
       </div>
 
