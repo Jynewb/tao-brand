@@ -55,12 +55,16 @@ export function CaseStudies() {
 
                 {/* Image */}
                 {cs.image && (
-                  <div className="rounded-xl overflow-hidden border border-white/[0.06] group-hover:border-white/[0.12] transition-colors duration-700">
+                  <div
+                    className={`rounded-xl overflow-hidden border border-white/[0.06] group-hover:border-white/[0.12] transition-colors duration-700 ${
+                      cs.bgLight ? "bg-white/[0.03] p-3 md:p-4" : ""
+                    }`}
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={asset(cs.image)}
                       alt={cs.client}
-                      className="w-full h-auto"
+                      className={`w-full h-auto ${cs.bgLight ? "rounded-lg" : ""}`}
                     />
                   </div>
                 )}
