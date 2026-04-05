@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ScrollReveal } from "../ui/ScrollReveal";
 import { MOS_MODULES } from "@/lib/constants";
+import { useLocale } from "@/lib/i18n";
 
 const containerVariants = {
   hidden: {},
@@ -26,6 +26,8 @@ const itemVariants = {
 };
 
 export function MOSModules() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="relative py-16 md:py-24 px-6">
       {/* Background glow */}
@@ -66,7 +68,7 @@ export function MOSModules() {
                         {mod.nameCN}
                       </p>
                       <p className="text-xs text-text-muted mt-1 tracking-wide">
-                        {mod.subtitle}
+                        {t(`mosModules.${mod.id}.subtitle`)}
                       </p>
                     </div>
                   </div>
@@ -75,10 +77,10 @@ export function MOSModules() {
                 {/* Right — Content */}
                 <div className="lg:col-span-8">
                   <p className="text-sm md:text-base font-light text-text-secondary/80 italic leading-relaxed mb-5">
-                    &ldquo;{mod.quote}&rdquo;
+                    &ldquo;{t(`mosModules.${mod.id}.quote`)}&rdquo;
                   </p>
                   <p className="text-sm md:text-base font-extralight text-text-secondary leading-loose">
-                    {mod.description}
+                    {t(`mosModules.${mod.id}.description`)}
                   </p>
 
                   {/* Hover accent */}

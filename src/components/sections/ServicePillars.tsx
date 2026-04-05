@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { SERVICE_PILLARS } from "@/lib/constants";
+import { useLocale } from "@/lib/i18n";
 
 const containerVariants = {
   hidden: {},
@@ -26,6 +27,8 @@ const itemVariants = {
 };
 
 export function ServicePillars() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="relative py-24 md:py-40 px-6">
       <div
@@ -39,13 +42,16 @@ export function ServicePillars() {
       <div className="relative max-w-5xl mx-auto">
         <ScrollReveal>
           <p className="text-text-muted text-xs tracking-[0.4em] uppercase mb-6">
-            Capabilities
+            {t("servicePillars.label")}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-text-primary mb-6 tracking-wide">
-            服务<span className="gradient-text font-light">能力矩阵</span>
+            {t("servicePillars.heading_prefix")}
+            <span className="gradient-text font-light">
+              {t("servicePillars.heading_highlight")}
+            </span>
           </h2>
           <p className="text-base md:text-lg font-extralight text-text-secondary mb-20 md:mb-28 max-w-2xl leading-relaxed">
-            以TAO MOS为底层驱动，构建覆盖品牌增长全链路的AI原生服务体系。
+            {t("servicePillars.description")}
           </p>
         </ScrollReveal>
 
@@ -67,10 +73,10 @@ export function ServicePillars() {
                   {pillar.titleEN}
                 </p>
                 <h3 className="text-lg md:text-xl font-light text-text-primary mb-4 tracking-wide">
-                  {pillar.title}
+                  {locale === "zh" ? pillar.title : pillar.titleEN}
                 </h3>
                 <p className="text-sm text-text-secondary font-extralight leading-relaxed">
-                  {pillar.description}
+                  {t(`servicePillars.services.${pillar.id}`)}
                 </p>
                 <div
                   className="mt-6 h-px w-0 group-hover:w-12 transition-all duration-700"
@@ -95,10 +101,10 @@ export function ServicePillars() {
                   {pillar.titleEN}
                 </p>
                 <h3 className="text-lg md:text-xl font-light text-text-primary mb-4 tracking-wide">
-                  {pillar.title}
+                  {locale === "zh" ? pillar.title : pillar.titleEN}
                 </h3>
                 <p className="text-sm text-text-secondary font-extralight leading-relaxed">
-                  {pillar.description}
+                  {t(`servicePillars.services.${pillar.id}`)}
                 </p>
                 <div
                   className="mt-6 h-px w-0 group-hover:w-12 transition-all duration-700"
@@ -112,13 +118,13 @@ export function ServicePillars() {
           </div>
         </motion.div>
 
-        {/* Bottom label — TAO MOS powers everything */}
+        {/* Bottom label */}
         <ScrollReveal delay={0.3}>
           <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/[0.06]">
               <div className="w-1.5 h-1.5 rounded-full bg-purple-start/50" />
               <span className="text-xs text-text-muted tracking-[0.2em] font-light">
-                Powered by TAO MOS — Marketing Operating System
+                {t("servicePillars.powered")}
               </span>
             </div>
           </div>

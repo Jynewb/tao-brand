@@ -8,6 +8,7 @@ import { CaseStudies } from "@/components/sections/CaseStudies";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 import { GrowthStory } from "@/components/sections/GrowthStory";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
 
 function SectionDivider() {
   return (
@@ -26,6 +27,7 @@ function SectionDivider() {
 export default function Home() {
   return (
     <main>
+      <LanguageToggle />
       {/* 1. Cover — Hero with tagline */}
       <Hero />
       <SectionDivider />

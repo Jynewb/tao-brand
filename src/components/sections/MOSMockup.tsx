@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "../ui/ScrollReveal";
+import { useLocale } from "@/lib/i18n";
 
 function MiniBar({ height, delay }: { height: number; delay: number }) {
   return (
@@ -31,6 +32,7 @@ function PulsingDot({ color, size = 6 }: { color: string; size?: number }) {
 }
 
 export function MOSMockup() {
+  const { t } = useLocale();
   const barData = [28, 45, 32, 58, 42, 65, 38, 72, 55, 48, 62, 78];
 
   return (
@@ -38,10 +40,10 @@ export function MOSMockup() {
       <div className="relative max-w-5xl mx-auto">
         <ScrollReveal>
           <p className="text-text-muted text-xs tracking-[0.4em] uppercase mb-6">
-            System Preview
+            {t("mosMockup.label")}
           </p>
           <p className="text-sm md:text-base font-extralight text-text-secondary mb-12 max-w-2xl leading-relaxed">
-            TAO MOS将洞察、策略与执行整合在统一的智能界面中，让每一个决策都有据可循。
+            {t("mosMockup.description")}
           </p>
         </ScrollReveal>
 
@@ -183,7 +185,7 @@ export function MOSMockup() {
                         />
                       ))}
 
-                      {/* Wave 1 — lower performance */}
+                      {/* Wave 1 */}
                       <motion.path
                         d="M0,130 C40,125 80,115 120,110 C160,105 200,100 240,95 C280,92 320,88 360,85 L400,82"
                         fill="none"
@@ -195,7 +197,7 @@ export function MOSMockup() {
                         transition={{ duration: 1.5, delay: 0.3 }}
                       />
 
-                      {/* Wave 2 — better performance */}
+                      {/* Wave 2 */}
                       <motion.path
                         d="M0,120 C40,110 80,95 120,85 C160,78 200,70 240,60 C280,55 320,48 360,42 L400,38"
                         fill="none"
@@ -207,7 +209,7 @@ export function MOSMockup() {
                         transition={{ duration: 1.5, delay: 0.6 }}
                       />
 
-                      {/* Wave 3 — best performance (system evolved) */}
+                      {/* Wave 3 */}
                       <motion.path
                         d="M0,100 C40,85 80,65 120,50 C160,40 200,30 240,22 C280,18 320,15 360,12 L400,10"
                         fill="none"

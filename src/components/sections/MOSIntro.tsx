@@ -2,22 +2,34 @@
 
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { NetworkGraph } from "../ui/NetworkGraph";
+import { useLocale } from "@/lib/i18n";
+
+const mosFlowItems = [
+  { num: "01", en: "PERCEPTION", cn: "感知" },
+  { num: "02", en: "STRATEGY", cn: "策略" },
+  { num: "03", en: "NETWORK", cn: "网络" },
+  { num: "04", en: "CREATION", cn: "创造" },
+  { num: "05", en: "AMPLIFY", cn: "放大" },
+  { num: "06", en: "EVOLUTION", cn: "进化" },
+];
 
 export function MOSIntro() {
+  const { t } = useLocale();
+
   return (
     <section className="relative py-28 md:py-40 px-6">
       <NetworkGraph className="opacity-40" />
       <div className="relative max-w-4xl mx-auto">
         <ScrollReveal>
           <p className="text-text-muted text-xs tracking-[0.4em] uppercase mb-6">
-            Methodology
+            {t("mosIntro.label")}
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-text-primary tracking-wide leading-tight">
             TAO{" "}
             <span className="gradient-text font-light">MOS</span>
           </h2>
           <p className="text-lg md:text-xl text-text-secondary font-extralight mt-3 tracking-wide">
-            Marketing Operating System
+            {t("mosIntro.subtitle")}
           </p>
         </ScrollReveal>
 
@@ -33,13 +45,13 @@ export function MOSIntro() {
 
         <ScrollReveal delay={0.3}>
           <p className="text-base md:text-lg font-extralight text-text-secondary leading-loose max-w-3xl">
-            传统营销是项目制的——每一次campaign从零开始，经验留在人脑里，换一个团队就归零。TAO MOS是一套AI原生的营销操作系统。它把品牌的每一次市场动作都转化为系统的养分——数据回流、策略迭代、认知沉淀。不是做完一个项目就结束，而是每一次执行都在让下一次更精准。
+            {t("mosIntro.p1")}
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.4}>
           <p className="text-sm md:text-base font-extralight text-text-muted leading-loose max-w-3xl mt-6">
-            这不是在旧流程上加AI工具，而是用AI重新定义营销服务的底层逻辑。
+            {t("mosIntro.p2")}
           </p>
         </ScrollReveal>
 
@@ -47,14 +59,7 @@ export function MOSIntro() {
         <ScrollReveal delay={0.5}>
           <div className="mt-20 md:mt-28">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/[0.06] rounded-2xl overflow-hidden">
-              {[
-                { num: "01", en: "PERCEPTION", cn: "感知" },
-                { num: "02", en: "STRATEGY", cn: "策略" },
-                { num: "03", en: "NETWORK", cn: "网络" },
-                { num: "04", en: "CREATION", cn: "创造" },
-                { num: "05", en: "AMPLIFY", cn: "放大" },
-                { num: "06", en: "EVOLUTION", cn: "进化" },
-              ].map((item) => (
+              {mosFlowItems.map((item) => (
                 <div
                   key={item.num}
                   className="bg-bg-primary p-6 md:p-8 text-center group hover:bg-white/[0.03] transition-colors duration-500"

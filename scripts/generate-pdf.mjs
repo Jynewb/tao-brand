@@ -1,159 +1,181 @@
 /**
  * TAO Brand Handbook PDF Generator
  *
- * Generates a single continuous-scroll PDF (no page breaks)
- * that matches the website experience exactly.
+ * Generates a slide-style PDF (16:9 landscape pages)
+ * Each .slide element becomes its own page.
  *
- * Usage: node scripts/generate-pdf.mjs [url]
+ * Usage: node scripts/generate-pdf.mjs [--lang=en|zh] [url]
  */
 
 import puppeteer from "puppeteer-core";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUTPUT_PATH = join(__dirname, "..", "TAO_Brand_Handbook.pdf");
-const URL = process.argv[2] || "https://jynewb.github.io/tao-brand/";
 
-const PAGE_WIDTH = 1440;
+// Parse arguments
+const args = process.argv.slice(2);
+const langArg = args.find((a) => a.startsWith("--lang="));
+const lang = langArg ? langArg.split("=")[1] : "zh";
+const urlArg = args.find((a) => !a.startsWith("--"));
+
+const OUTPUT_PATH = join(
+  __dirname,
+  "..",
+  lang === "en" ? "TAO_Brand_Handbook_EN.pdf" : "TAO_Brand_Handbook.pdf"
+);
+const BASE_URL = urlArg || "http://localhost:3333";
+const URL = `${BASE_URL}/pdf?lang=${lang}`;
+
+// 16:9 slide dimensions
+const SLIDE_W = 1280;
+const SLIDE_H = 720;
 
 async function generatePDF() {
+  console.log(`Generating ${lang.toUpperCase()} PDF...`);
   console.log("Launching browser...");
+
   const browser = await puppeteer.launch({
     headless: true,
     executablePath:
       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: [
+      "--no-sandbox",
+      "--proxy-bypass-list=*",
+      "--disable-extensions",
+      "--disable-default-apps",
+    ],
+    env: {
+      ...process.env,
+      NO_PROXY: "*",
+      no_proxy: "*",
+      HTTP_PROXY: "",
+      HTTPS_PROXY: "",
+      http_proxy: "",
+      https_proxy: "",
+    },
   });
 
   const page = await browser.newPage();
   await page.setViewport({
-    width: PAGE_WIDTH,
-    height: 900,
+    width: SLIDE_W,
+    height: SLIDE_H,
     deviceScaleFactor: 2,
   });
 
   console.log(`Loading ${URL} ...`);
-  await page.goto(URL, { waitUntil: "networkidle0", timeout: 30000 });
+  await page.goto(URL, { waitUntil: "networkidle0", timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
   await new Promise((r) => setTimeout(r, 2000));
 
-  // Scroll through to trigger all animations
-  console.log("Triggering all animations...");
-  await page.evaluate(async () => {
-    const totalHeight = document.body.scrollHeight;
-    for (let y = 0; y < totalHeight; y += 200) {
-      window.scrollTo(0, y);
-      await new Promise((r) => setTimeout(r, 60));
-    }
-    // Stay at bottom briefly
-    await new Promise((r) => setTimeout(r, 1000));
-    // Scroll back
-    window.scrollTo(0, 0);
-    await new Promise((r) => setTimeout(r, 1000));
+  // Count slides
+  const slideCount = await page.evaluate(
+    () => document.querySelectorAll(".slide").length
+  );
+  console.log(`Found ${slideCount} slides`);
+
+  if (slideCount === 0) {
+    console.error("No .slide elements found! Check the /pdf route.");
+    await browser.close();
+    process.exit(1);
+  }
+
+  // Screenshot each slide element
+  const screenshots = [];
+  for (let i = 0; i < slideCount; i++) {
+    const slideHandle = await page.evaluateHandle(
+      (idx) => document.querySelectorAll(".slide")[idx],
+      i
+    );
+    const shot = await slideHandle.asElement().screenshot({ type: "png" });
+    screenshots.push(shot);
+    process.stdout.write(`\r  Slide ${i + 1}/${slideCount}`);
+  }
+  console.log("");
+
+  // Save first screenshot as test
+  fs.writeFileSync(join(__dirname, "..", "test-slide.png"), screenshots[0]);
+  console.log(
+    `Test slide saved (${(screenshots[0].length / 1024).toFixed(0)}KB)`
+  );
+
+  // Write screenshots to temp dir
+  const tempDir = join(__dirname, "..", ".pdf-temp");
+  fs.mkdirSync(tempDir, { recursive: true });
+  for (let s = 0; s < screenshots.length; s++) {
+    fs.writeFileSync(
+      join(tempDir, `slide-${String(s).padStart(3, "0")}.png`),
+      screenshots[s]
+    );
+  }
+
+  // Create composite HTML
+  const slidesHTML = screenshots
+    .map((_, idx) => {
+      const imgPath = join(
+        tempDir,
+        `slide-${String(idx).padStart(3, "0")}.png`
+      );
+      return `<div class="slide" ${
+        idx < screenshots.length - 1
+          ? 'style="page-break-after: always;"'
+          : ""
+      }>
+        <img src="file://${imgPath}" />
+      </div>`;
+    })
+    .join("\n");
+
+  const htmlPath = join(tempDir, "composite.html");
+  fs.writeFileSync(
+    htmlPath,
+    `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; }
+  .slide { width: ${SLIDE_W}px; height: ${SLIDE_H}px; overflow: hidden; }
+  .slide img { width: 100%; height: 100%; display: block; }
+  @page { size: ${SLIDE_W}px ${SLIDE_H}px; margin: 0; }
+</style>
+</head>
+<body>${slidesHTML}</body>
+</html>`
+  );
+
+  const pdfPage = await browser.newPage();
+  await pdfPage.setViewport({
+    width: SLIDE_W,
+    height: SLIDE_H,
+    deviceScaleFactor: 2,
   });
-
-  // Force all animated elements visible
-  await page.evaluate(() => {
-    document.querySelectorAll("*").forEach((el) => {
-      const style = window.getComputedStyle(el);
-      const opacity = parseFloat(style.opacity);
-      // Only force-show elements that are content (hidden by animation)
-      // Skip intentionally faint elements (decorative backgrounds, etc.)
-      if (opacity > 0 && opacity < 0.3) return; // decorative
-      if (opacity === 0) {
-        // Check if it's a content element hidden by framer-motion
-        const tag = el.tagName.toLowerCase();
-        if (["div", "p", "h1", "h2", "h3", "span", "section", "a", "img"].includes(tag)) {
-          el.style.opacity = "1";
-          el.style.transform = "none";
-        }
-      }
-    });
-
-    // Hide scroll indicator
-    const scrollEl = document.querySelector("[class*='bottom-10']");
-    if (scrollEl) scrollEl.style.display = "none";
+  await pdfPage.goto(`file://${htmlPath}`, {
+    waitUntil: "load",
+    timeout: 30000,
   });
+  await new Promise((r) => setTimeout(r, 2000));
 
-  await new Promise((r) => setTimeout(r, 1000));
-
-  // Inject PDF-specific CSS overrides
-  await page.addStyleTag({
-    content: `
-      /* Remove hero full-screen height */
-      section:first-of-type {
-        min-height: auto !important;
-        padding-top: 8rem !important;
-        padding-bottom: 8rem !important;
-      }
-      /* Hide all decorative gradient blobs */
-      [class*="blur-["], [class*="blur-\\["] {
-        display: none !important;
-      }
-      /* Hide gradient mesh (aurora backgrounds) */
-      [class*="overflow-hidden"] > [class*="absolute"][class*="rounded-full"][class*="opacity-"] {
-        display: none !important;
-      }
-    `,
-  });
-
-  // Remove ALL decorative blurred/gradient elements via JS
-  await page.evaluate(() => {
-    // Kill every element that has blur in its computed style or class
-    document.querySelectorAll("*").forEach((el) => {
-      const cls = el.className || "";
-      const style = window.getComputedStyle(el);
-
-      // Remove any element with blur filter (decorative gradient blobs)
-      if (typeof cls === "string" && cls.includes("blur-[")) {
-        el.remove();
-        return;
-      }
-
-      // Remove elements with blur in computed filter
-      if (style.filter && style.filter.includes("blur") && style.filter !== "none") {
-        el.remove();
-        return;
-      }
-
-      // Remove elements with backdrop-filter blur
-      if (style.backdropFilter && style.backdropFilter.includes("blur")) {
-        // Don't remove glass cards, only large decorative ones
-        const rect = el.getBoundingClientRect();
-        if (rect.width > 400 && rect.height > 400 && style.position === "absolute") {
-          el.remove();
-          return;
-        }
-      }
-    });
-
-    // Remove aurora animation elements
-    document.querySelectorAll("[style*='aurora']").forEach((el) => {
-      el.remove();
-    });
-  });
-
-  await new Promise((r) => setTimeout(r, 500));
-
-  // Get the full page height
-  const fullHeight = await page.evaluate(() => document.body.scrollHeight);
-  console.log(`Page height: ${fullHeight}px`);
-
-  // Generate single-page PDF with full document height
-  await page.emulateMediaType("screen");
-
-  console.log("Generating continuous-scroll PDF...");
-  await page.pdf({
+  await pdfPage.emulateMediaType("screen");
+  await pdfPage.pdf({
     path: OUTPUT_PATH,
-    width: `${PAGE_WIDTH}px`,
-    height: `${fullHeight}px`,
+    width: `${SLIDE_W}px`,
+    height: `${SLIDE_H}px`,
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
   });
 
-  const fileSize = (await import("fs")).statSync(OUTPUT_PATH).size;
-  console.log(`PDF saved: ${OUTPUT_PATH} (${(fileSize / 1024 / 1024).toFixed(1)}MB)`);
+  // Cleanup temp files
+  for (const f of fs.readdirSync(tempDir)) {
+    fs.unlinkSync(join(tempDir, f));
+  }
+  fs.rmdirSync(tempDir);
+
+  const fileSize = fs.statSync(OUTPUT_PATH).size;
+  console.log(
+    `PDF saved: ${OUTPUT_PATH} (${(fileSize / 1024 / 1024).toFixed(1)}MB)`
+  );
 
   await browser.close();
   console.log("Done!");

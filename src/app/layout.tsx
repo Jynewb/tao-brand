@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/i18n";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -26,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className="antialiased">
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

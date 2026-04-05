@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { GradientMesh } from "../ui/GradientMesh";
 import { asset } from "@/lib/prefix";
+import { useLocale } from "@/lib/i18n";
 
 export function Hero() {
+  const { t } = useLocale();
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-24">
       <GradientMesh />
@@ -43,9 +46,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-text-primary leading-none">
-            Growth
-            <span className="gradient-text font-light">,</span>{" "}
-            Engineered
+            {t("hero.title1")}
+            <span className="gradient-text font-light">{t("hero.titlePunctuation")}</span>{" "}
+            {t("hero.title2")}
             <span className="gradient-text font-light">.</span>
           </h1>
         </motion.div>
@@ -56,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="mt-4 text-xl md:text-2xl lg:text-3xl font-extralight text-text-secondary tracking-widest">
-            驱动增长
+            {t("hero.tagline")}
           </p>
         </motion.div>
 
@@ -79,7 +82,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.9 }}
           className="text-xs md:text-sm text-text-muted tracking-[0.3em] font-light"
         >
-          AI-Native Integrated Marketing
+          {t("hero.positioning")}
         </motion.p>
       </div>
 

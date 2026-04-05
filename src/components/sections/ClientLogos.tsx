@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { CLIENT_GROUPS } from "@/lib/constants";
+import { useLocale } from "@/lib/i18n";
 
 const containerVariants = {
   hidden: {},
@@ -24,6 +25,8 @@ const itemVariants = {
 };
 
 export function ClientLogos() {
+  const { t } = useLocale();
+
   return (
     <section className="relative py-24 md:py-40 px-6">
       <div className="absolute inset-0 bg-white/[0.015]" />
@@ -31,14 +34,17 @@ export function ClientLogos() {
       <div className="relative max-w-5xl mx-auto">
         <ScrollReveal>
           <p className="text-text-muted text-xs tracking-[0.4em] uppercase mb-6">
-            Trusted By
+            {t("clientLogos.label")}
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-extralight text-text-primary mb-4 tracking-wide">
-            跨行业<span className="gradient-text font-light">头部品牌</span>
-            的信任之选
+            {t("clientLogos.heading_prefix")}
+            <span className="gradient-text font-light">
+              {t("clientLogos.heading_highlight")}
+            </span>
+            {t("clientLogos.heading_suffix")}
           </h2>
           <p className="text-text-secondary font-extralight text-base mb-20 md:mb-28 max-w-xl leading-relaxed">
-            从奢侈品到科技，从快消到运动，我们深谙每个行业的营销语言与增长逻辑。
+            {t("clientLogos.description")}
           </p>
         </ScrollReveal>
 
