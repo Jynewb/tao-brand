@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GradientMesh } from "../ui/GradientMesh";
 import { asset } from "@/lib/prefix";
 import { useLocale } from "@/lib/i18n";
 
@@ -9,78 +8,55 @@ export function Hero() {
   const { t } = useLocale();
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-24">
-      <GradientMesh />
-
-      {/* Subtle grid overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6"
+    >
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center mb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="flex justify-center mb-10"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={asset("/logo-tao.png")}
             alt="TAO"
-            className="w-[180px] md:w-[220px] lg:w-[260px] h-auto"
+            className="w-[140px] md:w-[180px] h-auto"
             style={{ filter: "invert(1)" }}
           />
         </motion.div>
 
+        {/* Main headline — Apple-style massive text */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-5xl md:text-7xl lg:text-[88px] font-semibold tracking-tight text-text-primary leading-[1.05]"
+        >
+          {t("hero.title1")}
+          {t("hero.titlePunctuation")}{" "}
+          <span className="gradient-text">{t("hero.title2")}</span>.
+        </motion.h1>
+
         {/* Tagline */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mt-6 text-xl md:text-2xl lg:text-[28px] text-text-secondary font-normal"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-tight text-text-primary leading-none">
-            {t("hero.title1")}
-            <span className="gradient-text font-light">{t("hero.titlePunctuation")}</span>{" "}
-            {t("hero.title2")}
-            <span className="gradient-text font-light">.</span>
-          </h1>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="mt-4 text-xl md:text-2xl lg:text-3xl font-extralight text-text-secondary tracking-widest">
-            {t("hero.tagline")}
-          </p>
-        </motion.div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="w-12 h-px mx-auto my-12"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
-          }}
-        />
+          {t("hero.tagline")}
+        </motion.p>
 
         {/* Positioning */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="text-xs md:text-sm text-text-muted tracking-[0.3em] font-light"
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-4 text-base md:text-lg text-text-secondary"
         >
           {t("hero.positioning")}
         </motion.p>

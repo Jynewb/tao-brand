@@ -9,59 +9,23 @@ import { ClientLogos } from "@/components/sections/ClientLogos";
 import { GrowthStory } from "@/components/sections/GrowthStory";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
-
-function SectionDivider() {
-  return (
-    <div className="flex justify-center py-2">
-      <div
-        className="w-px h-12"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent, rgba(99,102,241,0.15), transparent)",
-        }}
-      />
-    </div>
-  );
-}
+import { StickyNav } from "@/components/ui/StickyNav";
 
 export default function Home() {
   return (
     <main>
+      <StickyNav />
       <LanguageToggle />
-      {/* 1. Cover — Hero with tagline */}
+
       <Hero />
-      <SectionDivider />
-
-      {/* 2. Brand Manifesto */}
       <Manifesto />
-      <SectionDivider />
-
-      {/* 3. TAO MOS — System Philosophy + Overview */}
       <MOSIntro />
-
-      {/* 4. TAO MOS — Six Modules Deep Dive */}
       <MOSModules />
-
-      {/* 4.5 TAO MOS — System Preview Mockup */}
       <MOSMockup />
-      <SectionDivider />
-
-      {/* 5. Service Capabilities */}
       <ServicePillars />
-      <SectionDivider />
-
-      {/* 6. Case Studies */}
       <CaseStudies />
-      <SectionDivider />
-
-      {/* 7. Client Trust */}
       <ClientLogos />
-      <SectionDivider />
-
-      {/* 7. Journey */}
       <GrowthStory />
-
-      {/* 8. Contact */}
       <ContactCTA />
     </main>
   );

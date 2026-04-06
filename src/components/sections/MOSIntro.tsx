@@ -1,7 +1,6 @@
 "use client";
 
 import { ScrollReveal } from "../ui/ScrollReveal";
-import { NetworkGraph } from "../ui/NetworkGraph";
 import { useLocale } from "@/lib/i18n";
 
 const mosFlowItems = [
@@ -17,60 +16,55 @@ export function MOSIntro() {
   const { t } = useLocale();
 
   return (
-    <section className="relative py-28 md:py-40 px-6">
-      <NetworkGraph className="opacity-40" />
-      <div className="relative max-w-4xl mx-auto">
+    <section id="mos" className="relative py-32 md:py-48 px-6">
+      <div className="relative max-w-5xl mx-auto">
+        {/* Eyebrow + Super headline */}
         <ScrollReveal>
-          <p className="text-text-muted text-xs tracking-[0.4em] uppercase mb-6">
+          <p className="text-text-secondary text-sm tracking-wide uppercase mb-6">
             {t("mosIntro.label")}
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight text-text-primary tracking-wide leading-tight">
-            TAO{" "}
-            <span className="gradient-text font-light">MOS</span>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.1}>
+          <h2 className="text-4xl md:text-5xl lg:text-[64px] font-semibold text-text-primary tracking-tight leading-[1.08]">
+            TAO <span className="gradient-text-purple">MOS</span>
           </h2>
-          <p className="text-lg md:text-xl text-text-secondary font-extralight mt-3 tracking-wide">
+          <p className="mt-4 text-xl md:text-2xl text-text-secondary">
             {t("mosIntro.subtitle")}
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2}>
-          <div
-            className="w-16 h-px mt-12 mb-12"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(99,102,241,0.5), transparent)",
-            }}
-          />
-        </ScrollReveal>
+        {/* Description — constrained width like Apple */}
+        <div className="max-w-[720px] mt-12 md:mt-16">
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
+              {t("mosIntro.p1")}
+            </p>
+          </ScrollReveal>
 
+          <ScrollReveal delay={0.25}>
+            <p className="mt-6 text-base text-text-muted leading-relaxed">
+              {t("mosIntro.p2")}
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* MOS Flow — clean grid, Apple bento style */}
         <ScrollReveal delay={0.3}>
-          <p className="text-base md:text-lg font-extralight text-text-secondary leading-loose max-w-3xl">
-            {t("mosIntro.p1")}
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.4}>
-          <p className="text-sm md:text-base font-extralight text-text-muted leading-loose max-w-3xl mt-6">
-            {t("mosIntro.p2")}
-          </p>
-        </ScrollReveal>
-
-        {/* MOS Flow Diagram */}
-        <ScrollReveal delay={0.5}>
           <div className="mt-20 md:mt-28">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/[0.06] rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[1px] overflow-hidden rounded-2xl bg-border-subtle">
               {mosFlowItems.map((item) => (
                 <div
                   key={item.num}
-                  className="bg-bg-primary p-6 md:p-8 text-center group hover:bg-white/[0.03] transition-colors duration-500"
+                  className="bg-bg-primary p-6 md:p-8 text-center transition-colors duration-300 hover:bg-bg-alt"
                 >
-                  <span className="text-[10px] text-text-muted tracking-[0.3em]">
+                  <span className="text-[11px] text-text-muted tracking-[0.2em]">
                     {item.num}
                   </span>
-                  <p className="text-xs md:text-sm font-light text-text-primary mt-3 tracking-[0.15em]">
+                  <p className="text-sm font-medium text-text-primary mt-3 tracking-wider">
                     {item.en}
                   </p>
-                  <p className="text-xs text-text-muted mt-1">{item.cn}</p>
+                  <p className="text-xs text-text-secondary mt-1">{item.cn}</p>
                 </div>
               ))}
             </div>
@@ -78,13 +72,7 @@ export function MOSIntro() {
             {/* Loop indicator */}
             <div className="flex justify-center mt-6">
               <div className="flex items-center gap-3 text-text-muted">
-                <div
-                  className="w-20 h-px"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(99,102,241,0.3))",
-                  }}
-                />
+                <div className="w-16 h-[0.5px] bg-border-subtle" />
                 <span className="text-[10px] tracking-[0.3em]">LOOP</span>
                 <svg
                   width="14"
@@ -100,13 +88,7 @@ export function MOSIntro() {
                   <path d="M7 23l-4-4 4-4" />
                   <path d="M21 13v2a4 4 0 01-4 4H3" />
                 </svg>
-                <div
-                  className="w-20 h-px"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(99,102,241,0.3), transparent)",
-                  }}
-                />
+                <div className="w-16 h-[0.5px] bg-border-subtle" />
               </div>
             </div>
           </div>
