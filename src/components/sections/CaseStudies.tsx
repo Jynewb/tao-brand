@@ -64,6 +64,7 @@ export function CaseStudies() {
                       <img
                         src={asset(cs.image)}
                         alt={cs.client}
+                        loading="lazy"
                         className="w-full h-auto"
                       />
                     </div>
