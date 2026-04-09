@@ -286,7 +286,7 @@ function PDFSlides() {
         </div>
       </Slide>
 
-      {/* Slides 8-12: Case Studies */}
+      {/* Slides 8+: Case Studies */}
       {CASE_STUDIES.map((cs) => {
         const caseData = translations.caseStudies.cases[cs.id as keyof typeof translations.caseStudies.cases];
         const results = "results" in caseData
@@ -295,32 +295,24 @@ function PDFSlides() {
 
         return (
           <Slide key={cs.id} className="flex items-center px-20">
-            <div className="grid grid-cols-2 gap-12 w-full">
-              <div className="flex flex-col justify-center">
-                <span className="text-[10px] text-text-muted tracking-[0.3em] uppercase mb-4">
-                  {cs.categoryEN}
-                </span>
-                <h3 className="text-xl font-light text-text-primary mb-3 tracking-wide">
-                  {caseData.client}
-                </h3>
-                <p className="text-sm text-text-secondary font-extralight leading-relaxed mb-6">
-                  {caseData.description}
-                </p>
-                {results && results.length > 0 && (
-                  <div className="flex gap-8 mt-2">
-                    {results.map((r) => (
-                      <div key={r.label}>
-                        <span className="text-xl font-light text-purple-end">{r.value}</span>
-                        <p className="text-[10px] text-text-muted tracking-wider mt-1">{r.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              {cs.image && (
-                <div className={`flex items-center justify-center rounded-xl overflow-hidden border border-white/[0.06] ${cs.bgLight ? "bg-white/[0.03] p-3" : ""}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={asset(cs.image)} alt={cs.client} className={`w-full h-auto max-h-[500px] object-contain ${cs.bgLight ? "rounded-lg" : ""}`} />
+            <div className="flex flex-col justify-center w-full">
+              <span className="text-[10px] text-text-muted tracking-[0.3em] uppercase mb-4">
+                {cs.categoryEN}
+              </span>
+              <h3 className="text-xl font-light text-text-primary mb-3 tracking-wide">
+                {caseData.client}
+              </h3>
+              <p className="text-sm text-text-secondary font-extralight leading-relaxed mb-6 max-w-[600px]">
+                {caseData.description}
+              </p>
+              {results && results.length > 0 && (
+                <div className="flex gap-8 mt-2">
+                  {results.map((r) => (
+                    <div key={r.label}>
+                      <span className="text-xl font-light text-purple-end">{r.value}</span>
+                      <p className="text-[10px] text-text-muted tracking-wider mt-1">{r.label}</p>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

@@ -101,36 +101,37 @@ const translations = {
       heading_prefix: "实战",
       heading_highlight: "案例",
       description:
-        "从品牌战役到社媒种草，从内容运营到效果投放，每一个案例都是TAO方法论的实战验证。",
+        "从 MOS 全栈驱动的品类扩张，到 GEO 重塑品牌在 AI 搜索中的存在感——每一个案例都是 TAO AI-Native 方法论的实战验证。",
       cases: {
-        "xiamen-airlines": {
-          client: "Xiamen Airlines × Universal Studios Beijing",
-          description:
-            "助力厦门航空借力环球影城IP联合营销活动脱颖而出，持续输出品牌理念FLY FOR FUN，扩大品牌影响力及话题热度。",
-        },
         roborock: {
-          client: "Roborock — 种草效果全链路战略合作",
+          client: "Roborock — MOS 全栈驱动品类扩张",
           description:
-            "作为石头科技市场战略级合作伙伴，协助石头撬动全新品类市场。通过种草-投放-转化全流程一体化合作，帮助品线实现以新带老的业绩突破。",
+            "MOS 感知层捕获洗衣机品类市场信号 → 策略层推演「以新带老」路径 → 网络层 AI 精准匹配 KOL 矩阵 → 进化层 12 波次持续迭代，每一轮 campaign 让下一轮更精准。从种草到转化的全链路一体化合作，帮助石头科技撬动全新品类、实现市场份额登顶。",
           results: [
             { value: "IDC Q3 #1", label: "扫地机国内市场份额登顶" },
-            { value: "408%", label: "洗衣机销额同比增长" },
+            { value: "+408%", label: "洗衣机销额同比增长" },
+            { value: "12", label: "Campaign 波次跨越复盘" },
           ],
         },
-        huiren: {
-          client: "Huiren Pharma — 618品牌重塑",
-          description:
-            "帮助汇仁药业扭转企业内部及大众对品牌的刻板印象，打造全新品牌IP，重构人群营销物料及营销矩阵，拓展适用人群，中期长期创造更好的销售结果。",
-        },
         jnby: {
-          client: "JNBY — 年度微信/抖音账号代运营",
+          client: "JNBY — AI 驱动的全平台内容运营体系",
           description:
-            "负责江南布衣/江南布衣官方Outlet/不止盒子微信账号代运营服务，负责JNBY女装/jnbybyJNBY童装/速写CROQUIS男装抖音账号代运营服务。",
+            "为江南布衣集团旗下 JNBY 女装、jnbybyJNBY 童装、速写 CROQUIS 男装构建 AI-Native 全平台内容运营体系。MOS 创造层将 AI 内容生成与资深创意团队的审美判断结合——AI 基于品牌调性数据库批量生成内容方向与初稿，人控品质完成最终交付。感知层持续追踪各平台内容表现与用户反馈，自动生成优化建议回流至下一轮内容策略，实现从微信公众号、抖音、小红书到视频号的全域内容矩阵高效运转。",
+          results: [
+            { value: "6", label: "品牌账号全域覆盖" },
+            { value: "+220%", label: "内容互动率同比提升" },
+            { value: "-45%", label: "内容生产周期缩短" },
+          ],
         },
-        dfs: {
-          client: "DFS CQAP — 企微/抖音私域运营",
+        "geo-supplement": {
+          client: "某国际保健品牌 — GEO 品牌归属纠偏",
           description:
-            "负责DFS CQAP企微/抖音私域内容矩阵打造，文案撰写、图片设计、粉丝运营等，私域圈层内提升DFS CQAP品牌知名度和影响力，高效提升私域转化效率。",
+            "该品牌在中国市场遭遇 AI 搜索引擎的品牌归属错误——主流 AI 平台将其错误标注为「美国品牌」，严重影响消费者信任。TAO 通过 GEO 体系化干预：AI 回答探究 → 引用源解析 → 内容创作发布 → 持续追踪迭代，2 个月内将品牌归属正确率从 27% 提升至 95%+，核心成分提及率从 15% 提升至 58%。",
+          results: [
+            { value: "27% → 95%+", label: "AI 品牌归属正确率" },
+            { value: "15% → 58%", label: "成分提及率（2个月）" },
+            { value: "6+", label: "覆盖主流 AI 搜索平台" },
+          ],
         },
       },
     },
@@ -263,36 +264,37 @@ const translations = {
       heading_prefix: "Case ",
       heading_highlight: "Studies",
       description:
-        "From brand campaigns to social seeding, content operations to performance media — every case is a real-world validation of the TAO methodology.",
+        "From MOS full-stack category expansion to GEO brand attribution recovery — every case is a live validation of the TAO AI-Native methodology.",
       cases: {
-        "xiamen-airlines": {
-          client: "Xiamen Airlines × Universal Studios Beijing",
-          description:
-            "Powered Xiamen Airlines' standout co-marketing campaign with Universal Studios Beijing IP, continuously amplifying the FLY FOR FUN brand concept to expand brand influence and topic engagement.",
-        },
         roborock: {
-          client: "Roborock — Full-Funnel Social Seeding Partnership",
+          client: "Roborock — MOS Full-Stack Category Expansion",
           description:
-            "As Roborock's strategic market partner, we helped unlock entirely new product categories through an integrated seeding-to-media-to-conversion pipeline, driving breakthrough results with new products lifting legacy lines.",
+            "MOS Perception layer detected washing machine category signals → Strategy layer modeled the 'new lifts legacy' expansion path → Network layer AI-matched KOL matrices → Evolution layer iterated across 12 campaign waves, each smarter than the last. Full-funnel integration from seeding to conversion helped Roborock unlock a new category and claim the #1 market share.",
           results: [
             { value: "IDC Q3 #1", label: "China robot vacuum market share" },
-            { value: "408%", label: "Washing machine YoY sales growth" },
+            { value: "+408%", label: "Washing machine YoY sales growth" },
+            { value: "12", label: "Campaign waves with cross-learning" },
           ],
         },
-        huiren: {
-          client: "Huiren Pharma — 618 Brand Repositioning",
-          description:
-            "Helped Huiren Pharma overturn internal and public brand stereotypes by creating a new brand IP, restructuring audience marketing materials, expanding target demographics, and building toward better mid-to-long-term sales results.",
-        },
         jnby: {
-          client: "JNBY — Annual WeChat/TikTok Account Management",
+          client: "JNBY — AI-Driven Full-Platform Content Operations",
           description:
-            "Managing WeChat accounts for JNBY, JNBY Official Outlet, and BeyondBox, plus TikTok accounts for JNBY Womenswear, jnbybyJNBY Kidswear, and CROQUIS Menswear.",
+            "Built an AI-Native content operations system for JNBY Group's three brands: JNBY Womenswear, jnbybyJNBY Kidswear, and CROQUIS Menswear. MOS Creation layer merges AI content generation with senior creative teams' aesthetic judgment — AI generates content directions and drafts from a brand tonality database, humans curate and finalize. Perception layer continuously tracks cross-platform content performance and audience feedback, auto-generating optimization insights that flow back into the next content cycle. The result: a high-efficiency content matrix spanning WeChat, Douyin, Xiaohongshu, and Channels.",
+          results: [
+            { value: "6", label: "Brand accounts, full-platform" },
+            { value: "+220%", label: "Content engagement rate YoY" },
+            { value: "-45%", label: "Content production cycle" },
+          ],
         },
-        dfs: {
-          client: "DFS CQAP — WeCom/TikTok Private Domain Operations",
+        "geo-supplement": {
+          client: "Global Supplement Brand — GEO Attribution Recovery",
           description:
-            "Building DFS CQAP's WeCom/TikTok private domain content matrix — copywriting, visual design, community management — driving brand awareness and conversion efficiency within private domain channels.",
+            "The brand faced AI search engines incorrectly attributing it as an 'American brand' in the China market, eroding consumer trust. TAO deployed systematic GEO intervention: AI answer analysis → citation source mapping → content creation & publishing → continuous tracking. Within 2 months, brand attribution accuracy rose from 27% to 95%+, and core ingredient mentions from 15% to 58%.",
+          results: [
+            { value: "27% → 95%+", label: "AI brand attribution accuracy" },
+            { value: "15% → 58%", label: "Ingredient mention rate (2 months)" },
+            { value: "6+", label: "AI search platforms covered" },
+          ],
         },
       },
     },

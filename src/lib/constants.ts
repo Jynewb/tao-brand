@@ -175,57 +175,34 @@ export const CLIENT_GROUPS = [
 
 export const CASE_STUDIES = [
   {
-    id: "xiamen-airlines",
-    categoryEN: "Brand Campaign",
-    client: "Xiamen Airlines × Universal Studios Beijing",
-    description:
-      "助力厦门航空借力环球影城IP联合营销活动脱颖而出，持续输出品牌理念FLY FOR FUN，扩大品牌影响力及话题热度。",
-    image: "/cases/xiamen-airlines.jpg",
-    bgLight: false,
-    results: [] as { value: string; label: string }[],
-  },
-  {
     id: "roborock",
-    categoryEN: "Social Seeding",
-    client: "Roborock — 种草效果全链路战略合作",
-    description:
-      "作为石头科技市场战略级合作伙伴，协助石头撬动全新品类市场。通过种草-投放-转化全流程一体化合作，帮助品线实现以新带老的业绩突破。",
-    image: "/cases/roborock.jpg",
-    bgLight: false,
+    categoryEN: "MOS Full-Stack · Category Expansion",
+    visual: "roborock",
     results: [
       { value: "IDC Q3 #1", label: "扫地机国内市场份额登顶" },
-      { value: "408%", label: "洗衣机销额同比增长" },
+      { value: "+408%", label: "洗衣机销额同比增长" },
+      { value: "12", label: "Campaign 波次跨越复盘" },
     ],
   },
   {
-    id: "huiren",
-    categoryEN: "Brand Campaign",
-    client: "Huiren Pharma — 618品牌重塑",
-    description:
-      "帮助汇仁药业扭转企业内部及大众对品牌的刻板印象，打造全新品牌IP，重构人群营销物料及营销矩阵，拓展适用人群，中期长期创造更好的销售结果。",
-    image: "/cases/huiren.jpg",
-    bgLight: true,
-    results: [] as { value: string; label: string }[],
-  },
-  {
     id: "jnby",
-    categoryEN: "Content Operation",
-    client: "JNBY — 年度微信/抖音账号代运营",
-    description:
-      "负责江南布衣/江南布衣官方Outlet/不止盒子微信账号代运营服务，负责JNBY女装/jnbybyJNBY童装/速写CROQUIS男装抖音账号代运营服务。",
-    image: "/cases/jnby.jpg",
-    bgLight: true,
-    results: [] as { value: string; label: string }[],
+    categoryEN: "Content Intelligence · Full-Platform Operations",
+    visual: "jnby",
+    results: [
+      { value: "6", label: "品牌账号全域覆盖" },
+      { value: "+220%", label: "内容互动率同比提升" },
+      { value: "-45%", label: "内容生产周期缩短" },
+    ],
   },
   {
-    id: "dfs",
-    categoryEN: "Private Domain",
-    client: "DFS CQAP — 企微/抖音私域运营",
-    description:
-      "负责DFS CQAP企微/抖音私域内容矩阵打造，文案撰写、图片设计、粉丝运营等，私域圈层内提升DFS CQAP品牌知名度和影响力，高效提升私域转化效率。",
-    image: "/cases/dfs.jpg",
-    bgLight: true,
-    results: [] as { value: string; label: string }[],
+    id: "geo-supplement",
+    categoryEN: "GEO · Brand Attribution Recovery",
+    visual: "geo-supplement",
+    results: [
+      { value: "27% → 95%+", label: "AI 品牌归属正确率" },
+      { value: "15% → 58%", label: "成分提及率（2个月）" },
+      { value: "6+", label: "覆盖主流 AI 搜索平台" },
+    ],
   },
 ];
 
