@@ -603,6 +603,27 @@ export function MOSMockup() {
             </AnimatePresence>
           </div>
         </ScrollReveal>
+
+        <ScrollReveal delay={0.3}>
+          <div className="mt-10 flex flex-col items-center gap-3">
+            <a
+              href="https://tao-mos.vercel.app/perception"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/40 transition-all"
+            >
+              <span className="text-sm tracking-wider text-text-primary">
+                {t("mosMockup.cta")}
+              </span>
+              <span className="text-sm text-text-primary transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </a>
+            <span className="text-[11px] text-text-muted tracking-wider">
+              {t("mosMockup.ctaHint")}
+            </span>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

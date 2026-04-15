@@ -76,6 +76,8 @@ const translations = {
       label: "System Preview",
       description:
         "TAO MOS将洞察、策略与执行整合在统一的智能界面中，让每一个决策都有据可循。",
+      cta: "进入完整 MOS 系统",
+      ctaHint: "在线体验 6 大模块 →",
     },
     servicePillars: {
       label: "Capabilities",
@@ -239,6 +241,8 @@ const translations = {
       label: "System Preview",
       description:
         "TAO MOS integrates insights, strategy, and execution into a unified intelligent interface, ensuring every decision is data-informed.",
+      cta: "Enter the Full MOS System",
+      ctaHint: "Live demo of all 6 modules →",
     },
     servicePillars: {
       label: "Capabilities",
